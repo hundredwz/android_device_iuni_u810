@@ -1,0 +1,22 @@
+ro.qrom.beaconkey=0M000V5PH01B6QQD
+ro.qrom.product.device=u2
+ro.qrom.product.device.brand=iuni
+ro.qrom.build.version.number=10160412
+ro.qrom.build.version.name=ADRQRTOS10_B
+ro.qrom.build.version.snflag=ADRQRTOS
+ro.qrom.build.version.snver=10
+ro.qrom.build.version.day=160412
+ro.qrom.build.version.type=B
+ro.qrom.build.number=254
+ro.qrom.build.lc=AF347FA445A4EA78
+ro.qrom.build.lcid=2941
+ro.qrom.build.brand=tos
+ro.qrom.build.date=Tue Apr 5 12:54:49 CST 2016
+ro.qrom.build.date.utc=1459832089
+ro.qrom.build.os=android4.4.4
+ro.qrom.build.type=beta
+ro.qrom.otapath=/data/media/0
+
+qrom_disposeIcon_enable=1
+qrom_permission_enable=1
+
