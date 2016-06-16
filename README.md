@@ -11,3 +11,5 @@ This device for TencentOS is patched and shared by wymon.
 Due to the poor network,I pushed it to github instead of him.
 
 I sincerely hope that everyone who uses this code could take respect of wymon's hard work and keep on the spirit of sharing!
+
+<p align="right">---------20160616</p>
