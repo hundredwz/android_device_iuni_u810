@@ -4,7 +4,7 @@
 
 希望使用本代码的用户尊重猪头大大的心血，并将开源精神持续下去！
 
-20160616
+<p align="right">20160616</p>
 
 This device for TencentOS is patched and shared by wymon.
 
