@@ -1,0 +1,2 @@
+add_lunch_combo omni_U810-userdebug
+add_lunch_combo omni_U810-eng
