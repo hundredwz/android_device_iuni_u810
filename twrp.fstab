@@ -1,9 +1,0 @@
-# Standard split data and internal storage fstab
-# mount point	fstype		device			[device2]
-/boot		   emmc		/dev/block/platform/msm_sdcc.1/by-name/boot
-/system		   ext4		/dev/block/platform/msm_sdcc.1/by-name/system
-/data		   ext4		/dev/block/platform/msm_sdcc.1/by-name/userdata
-/cache		   ext4		/dev/block/platform/msm_sdcc.1/by-name/cache
-/recovery	   emmc		/dev/block/platform/msm_sdcc.1/by-name/recovery
-/sdcard		   vfat		/dev/block/mmcblk1p1	/dev/block/mmcblk0p20 flags=storage
-/usb-otg      vfat          /dev/block/sda1     /dev/block/sda  flags=removable;storage;display=USB-OTG
