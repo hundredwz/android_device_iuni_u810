@@ -25,7 +25,14 @@ TARGET_OTA_ASSERT_DEVICE := iuni,IUNI,u810,U810,U2,u2
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
-#USE_CLANG_PLATFORM_BUILD := true
+
+#Options
+#BOARD_USES_GENERIC_AUDIO := true
+#TARGET_GLOBAL_CFLAGS += -mtune=krait -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mtune=krait -mfpu=neon -mfloat-abi=softfp
+
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
 
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=disabled androidboot.hardware=qcom user_debug=22 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
@@ -39,12 +46,13 @@ TARGET_PREBUILT_KERNEL := device/iuni/u2/kernel
 # global
 TARGET_SPECIFIC_HEADER_PATH := device/iuni/u2/include
 BOARD_USES_QCOM_HARDWARE := true
+#COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+#TARGET_USES_QCOM_BSP := true
 
 # Graphics
 USE_OPENGL_RENDERER               := true
-TARGET_CONTINUOUS_SPLASH_ENABLED  := true
-TARGET_USES_C2D_COMPOSITION       := true
-TARGET_USE_COMPAT_GRALLOC_PERFORM := true
+TARGET_QCOM_DISPLAY_VARIANT 	  := legacy
 TARGET_USES_ION                   := true
 OVERRIDE_RS_DRIVER                := libRSDriver_adreno.so
 NUM_FRAMEBUFFER_SURFACE_BUFFERS   := 3
@@ -60,18 +68,19 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Time Daemon
-BOARD_USES_QC_TIME_SERVICES := true
-TARGET_POWERHAL_VARIANT             := qcom
+#BOARD_USES_QC_TIME_SERVICES := true
+#TARGET_POWERHAL_VARIANT             := qcom
 
 # Audio
 BOARD_USES_ALSA_AUDIO                      := true
-AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
+TARGET_QCOM_AUDIO_VARIANT := caf
 
 # Camera
+#COMMON_GLOBAL_CFLAGS += -DMR0_CAMERA_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # RIL
-TARGET_RIL_VARIANT := caf
+#TARGET_RIL_VARIANT := caf
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -95,8 +104,8 @@ WIFI_DRIVER_MODULE_NAME          := "wlan"
 TARGET_USES_QCOM_WCNSS_QMI       := true
 TARGET_USES_WCNSS_MAC_ADDR_REV   := true
 
-WLAN_MODULES:
-	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
+#WLAN_MODULES:
+#	ln -sf /system/lib/modules/pronto/pronto_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
 
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -112,39 +121,35 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_RECOVERY_FSTAB := device/iuni/u2/rootdir/fstab.qcom
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/iuni/u2
+#TARGET_RELEASETOOLS_EXTENSIONS := device/iuni/u2
 
 # inherit from the proprietary version
 -include vendor/iuni/u2/BoardConfigVendor.mk
 
 # Charger
-BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_CHARGER_DISABLE_INIT_BLANK := true
+#BOARD_CHARGER_ENABLE_SUSPEND := true
+#BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # UMS
 BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
 
 # CM Hardware
-BOARD_USES_CYANOGEN_HARDWARE := true
+#BOARD_USES_CYANOGEN_HARDWARE := true
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/platform/tp_wake_switch/double_wake"
-BOARD_HARDWARE_CLASS += \
-    hardware/cyanogen/cmhw
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# keymaster
-TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Use prebuilt webviewchromium to cut down build time
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+#PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 # Enable dex-preoptimization to speed up the first boot sequence
-WITH_DEXPREOPT := true
+#WITH_DEXPREOPT := true
 #WITH_DEXPREOPT_BOOT_IMG_ONLY := true
-WITH_DEXPREOPT_PIC := true
-WITH_DEXPREOPT_COMP := false
+#WITH_DEXPREOPT_PIC := true
+#WITH_DEXPREOPT_COMP := false
 
 #TWRP
 TW_THEME := portrait_hdpi
