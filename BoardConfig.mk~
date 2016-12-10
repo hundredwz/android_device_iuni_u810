@@ -25,7 +25,6 @@ TARGET_OTA_ASSERT_DEVICE := iuni,IUNI,u810,U810,U2,u2
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
-TARGET_NO_BOOTLOADER := true
 
 #Options
 #TARGET_GLOBAL_CFLAGS += -mtune=krait -mfpu=neon -mfloat-abi=softfp
