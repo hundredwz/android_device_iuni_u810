@@ -20,25 +20,21 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := krait
 
-TARGET_BOOTLOADER_BOARD_NAME := u2
+#TARGET_BOOTLOADER_BOARD_NAME := u2
 TARGET_OTA_ASSERT_DEVICE := iuni,IUNI,u810,U810,U2,u2
 TARGET_BOARD_PLATFORM := msm8974
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno330
 
 TARGET_NO_BOOTLOADER := true
 
-#Options
-#TARGET_GLOBAL_CFLAGS += -mtune=krait -mfpu=neon -mfloat-abi=softfp
-#TARGET_GLOBAL_CPPFLAGS += -mtune=krait -mfpu=neon -mfloat-abi=softfp
-
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 BOARD_KERNEL_BASE := 0x00000000
+#BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom loglevel=1 user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.selinux=disabled androidboot.hardware=qcom user_debug=22 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
-#BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --kernel_offset 0x00008000
-TARGET_KERNEL_ARCH := arm
+BOARD_MKBOOTIMG_ARGS := --dt device/iuni/u2/dt.img --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 
 TARGET_PREBUILT_KERNEL := device/iuni/u2/kernel
 
@@ -113,7 +109,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 536870912
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33554432
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x1400000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1073741824
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13747929088 # 13747945472 - 16384 for crypto footer
@@ -141,10 +137,6 @@ TARGET_TAP_TO_WAKE_NODE := "/sys/devices/platform/tp_wake_switch/double_wake"
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-
-# Use prebuilt webviewchromium to cut down build time
-#PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 # Enable dex-preoptimization to speed up the first boot sequence
 #WITH_DEXPREOPT := true

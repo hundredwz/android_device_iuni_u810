@@ -27,8 +27,8 @@
 
 on init
     write /sys/class/android_usb/android0/f_rndis/wceis 1
-    write /sys/class/android_usb/android0/iProduct Elite
-    write /sys/class/android_usb/android0/iManufacturer Discovery
+    write /sys/class/android_usb/android0/iProduct U810
+    write /sys/class/android_usb/android0/iManufacturer IUNI
 
 service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
     class core

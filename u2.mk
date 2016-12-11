@@ -19,7 +19,7 @@ $(call inherit-product, device/qcom/common/Android.mk)
 # TWRP
 PRODUCT_COPY_FILES += \
     device/iuni/u2/rootdir/init.qcom.usb.rc:recovery/root/init.usb.rc \
-    device/iuni/u2/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab 
+    device/iuni/u2/rootdir/recovery.fstab:recovery/root/etc/recovery.fstab 
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
@@ -42,7 +42,6 @@ PRODUCT_COPY_FILES += \
 # system/etc files
 PRODUCT_COPY_FILES += \
     device/iuni/u2/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/iuni/u2/rootdir/etc/set_baseband.sh:system/etc/set_baseband.sh \
     device/iuni/u2/rootdir/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh
 
 PRODUCT_COPY_FILES += \
@@ -127,7 +126,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8974 \
     memtrack.msm8974 \
 	libqdutils
-#	libqdMetaData
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -191,33 +189,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608 \
-    persist.hwc.mdpcomp.enable=true
-
-# QMI
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.data.netmgrd.qos.enable=true \
-    rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
-    ro.use_data_netmgrd=true \
-    ro.telephony.default_network=3 \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.add_power_save=1 \
-    ro.telephony.call_ring.multiple=0 \
-    ro.qualcomm.cabl=1 \
-    hw.cabl.level=Auto 
-
-#For internal sdcard
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    ro.vold.primary_physical=1
-    
+    persist.hwc.mdpcomp.enable=true    
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
-
-# qcom
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
  
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
